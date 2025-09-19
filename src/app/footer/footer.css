@@ -1,0 +1,68 @@
+/*news letter container */
+.newsbox {
+    width: 100%;
+    height: 300px;
+    background-color: #111827;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-image: url("./images/newsletter\ back.jpg"); */
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.news {
+    color: white;
+    width: 100%;
+    text-align: center;
+    height:auto;
+}
+.news h5{
+    font-size: 20px;
+}
+.news input {
+    font-size: 20px;
+    border-radius: 4px;
+    height: 40px;
+    width: 30%;
+    text-align: center;
+    margin-right: 10px;
+}
+.news button {
+    font-size: 20px;
+    height: 40px;
+    width: 200px;
+    background-color: white;
+    border-radius: 4px;
+}
+/*footer section*/
+.footer-box {
+    color: white;
+    height: 150px;
+    background-color: #000;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
+.footer-box a {
+    text-decoration: none ;
+    color: white ;
+}
+.footer-col {
+    margin-top: 30px;
+    height:150px;
+    width: 30%;
+    text-align: center;
+}
+.copyright-section {
+    width: 100%;
+    background-color: #000;
+    color: white;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    text-align: center;
+}
+.copyright-section p {
+    margin-bottom: 0;
+}
