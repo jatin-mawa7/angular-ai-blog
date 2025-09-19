@@ -27,3 +27,11 @@
     width: 100%;
     
 }
+@media (max-width: 768px) {
+  /* Hero image: fit image inside container */
+  .hero-banner {
+    height: 150px;              
+    object-fit: contain;
+    background-color: #000;     
+  }
+}
