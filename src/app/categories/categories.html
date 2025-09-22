@@ -1,1 +1,24 @@
-<p>categories works!</p>
+<section class="card">
+  <h1>Categories</h1>
+
+  <div class="category-buttons">
+    <button class="category-btn" (click)="filterPosts('All')">All</button>
+    <button class="category-btn" (click)="filterPosts('Machine Learning')">Machine Learning</button>
+    <button class="category-btn" (click)="filterPosts('Deep Learning')">Deep Learning</button>
+    <button class="category-btn" (click)="filterPosts('NLP')">NLP</button>
+    <button class="category-btn" (click)="filterPosts('Robotics')">Robotics</button>
+    <button class="category-btn" (click)="filterPosts('AI Ethics')">AI Ethics</button>
+  </div>
+
+  <div id="blog-container" class="blog-grid">
+    <article *ngFor="let post of displayedPosts" class="blog-post-card">
+      <img [src]="post.image" [alt]="post.title" class="blog-post-image" />
+      <div class="card-body">
+        <h2 class="card-title">{{ post.title }}</h2>
+        <p class="card-meta">By {{ post.author }} | {{ post.date }}</p>
+        <p class="card-description">{{ post.description }}</p>
+      </div>
+    </article>
+  </div>
+</section>
+
