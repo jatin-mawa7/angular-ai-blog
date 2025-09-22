@@ -387,3 +387,78 @@
         .blog-form button:hover {
             background-color: #218838;
         }
+
+        .blog-wrapper {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .blog-card {
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(99, 102, 241, 0.20);
+            padding: 24px;
+        }
+
+        .blog-card h1 {
+            text-align: center;
+            font-size: 1.8rem;
+            color: #111827;
+            margin-bottom: 16px;
+        }
+
+        .blog-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-form label {
+            font-weight: 600;
+            margin-top: 12px;
+            margin-bottom: 6px;
+            color: #374151;
+        }
+
+        .blog-form input,
+        .blog-form textarea {
+            padding: 12px;
+            border: 1px solid #c7c9f9;
+            border-radius: 8px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .blog-form input:focus,
+        .blog-form textarea:focus {
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+        }
+
+        .blog-form textarea {
+            resize: vertical;
+        }
+
+        .blog-form button {
+            margin-top: 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 18px;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .blog-form button:hover {
+            background-color: #0056b3;
+        }
+
+        .error-text {
+            color: #b91c1c;
+            font-size: 0.9rem;
+            margin-top: 4px;
+        }

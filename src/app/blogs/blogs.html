@@ -24,16 +24,16 @@
 <!-- posts display -->
 
 <!-- <div class="posts-container" id="posts-container"> -->
-    <!-- Blog posts will be injected here -->
-    <div class="posts-container">
-        <div *ngFor="let post of displayedPosts" class="post-card">
-            <img [src]="post.image" [alt]="post.title" />
-            <h3>{{ post.title }}</h3>
-            <div class="post-meta">By {{ post.author }} | {{ post.date }}</div>
-            <p class="post-desc">{{ post.description }}</p>
-            <a [href]="post.link" target="_self" class="post-link">read more...</a>
-        </div>
+<!-- Blog posts will be injected here -->
+<div class="posts-container">
+    <div *ngFor="let post of displayedPosts" class="post-card">
+        <img [src]="post.image" [alt]="post.title" />
+        <h3>{{ post.title }}</h3>
+        <div class="post-meta">By {{ post.author }} | {{ post.date }}</div>
+        <p class="post-desc">{{ post.description }}</p>
+        <a [href]="post.link" target="_self" class="post-link">read more...</a>
     </div>
+</div>
 <!-- </div> -->
 
 <!-- see-more button -->
@@ -55,26 +55,44 @@
     <div class="vertical-hr"></div>
 
     <div class="right-content">
-        <form class="blog-form" action="#" method="POST">
+        <form #blogForm="ngForm" (ngSubmit)="onSubmit(blogForm)" novalidate class="blog-form">
 
             <label for="title">Blog Title</label>
-            <input type="text" id="title" name="title" placeholder="Enter blog title" required />
+            <input type="text" id="title" name="title" [(ngModel)]="blogData.title" required minlength="3"
+                #title="ngModel">
+            <span class="error-text" *ngIf="title.invalid && title.touched">
+                Blog title is required (min 3 characters).
+            </span>
 
             <label for="author">Author Name</label>
-            <input type="text" id="author" name="author" placeholder="Your name" required />
+            <input type="text" id="author" name="author" [(ngModel)]="blogData.author" required minlength="2"
+                #author="ngModel">
+            <span class="error-text" *ngIf="author.invalid && author.touched">
+                Author name is required (min 2 characters).
+            </span>
 
             <label for="mail">E-mail</label>
-            <input id="mail" name="mail" type="email" placeholder="Enter your Email Address"
-                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required />
+            <input type="email" id="mail" name="mail" [(ngModel)]="blogData.mail" required email #mail="ngModel">
+            <span class="error-text" *ngIf="mail.invalid && mail.touched">
+                Please enter a valid email address.
+            </span>
 
             <label for="content">Content</label>
-            <textarea id="content" name="content" placeholder="Write your blog here..." rows="8" required></textarea>
+            <textarea id="content" name="content" rows="8" [(ngModel)]="blogData.content" required minlength="10"
+                #content="ngModel"></textarea>
+            <span class="error-text" *ngIf="content.invalid && content.touched">
+                Content is required (min 10 characters).
+            </span>
 
             <label for="tags">Tags (comma separated)</label>
-            <input type="text" id="tags" name="tags" placeholder="e.g. tech, javascript, web" />
+            <input type="text" id="tags" name="tags" [(ngModel)]="blogData.tags">
 
-            <button type="submit">Submit Blog</button>
+            <button type="submit" [disabled]="blogForm.invalid">Submit Blog</button>
         </form>
+
+        <p class="alert alert-success mt-3" *ngIf="blogSubmitted">
+            ✅ Blog submitted successfully!
+        </p>
 
     </div>
 </div>
@@ -83,37 +101,6 @@
 
 <!-- jatins footer code starts -->
 
-<footer>
-    <div class="footer-box">
-        <div class="footer-col">
-            <h5>Social Media Links</h5>
-            <i class="fa-brands fa-square-instagram"></i> <a href="#">Instagram</a><br>
-            <i class="fa-brands fa-linkedin"></i> <a href="#">LinkedIn</a><br>
-            <i class="fa-brands fa-twitter"></i> <a href="#">Twitter</a><br>
-            <i class="fa-brands fa-facebook"></i> <a href="#">Facebook</a><br>
-        </div>
-        <div class="footer-col">
-            <h5>Quick Navigation</h5>
-            <a href="index.html">Home</a><br>
-            <a href="blog.html">Blogs</a><br>
-            <a href="categories.html">Categories</a><br>
-            <a href="about.html">About Us</a><br>
-        </div>
-        <div class="footer-col">
-            <h5>Contact-Info:</h5>
-            <p><i class="fa-solid fa-phone"></i><a href="tel:+91 7888060628">Call Us: +91 7888060628</a></p>
-            <p><i class="fa-solid fa-envelope"></i><a href="mailto:spriyadarshi.ext@deloitte.com">
-                    spriyadarshi.ext@deloitte.com</a>
-            </p>
-            <address><i class="fa-solid fa-location-dot"></i>Bangalore</address>
-        </div>
-    </div>
 
-    <div class="copyright-section">
-        <!-- <center> -->
-        <p>&copy; 2025. AI BLOG WEBSITE. All Rights Reserved.</p>
-        <!-- </center> -->
-    </div>
-</footer>
 
 <!-- jatins footer code ends -->
