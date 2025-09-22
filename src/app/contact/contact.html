@@ -6,57 +6,85 @@
 
       <!-- Row 1: Name & Email -->
       <div class="form-row">
-        <div>
-          <label for="name">Name</label>
+        <div class="form-group">
+          <label for="name">Full Name *</label>
           <input type="text" id="name" name="name" [(ngModel)]="formData.name"
-                 required minlength="2" maxlength="80" #name="ngModel">
-          <span class="error-text" *ngIf="name.invalid && name.touched">
-            Please enter your name (2+ characters).
-          </span>
+                 required minlength="2" maxlength="80" #name="ngModel"
+                 placeholder="Enter your full name">
+          <div class="error-text" *ngIf="name.invalid && name.touched">
+            <span *ngIf="name.errors?.['required']">Name is required</span>
+            <span *ngIf="name.errors?.['minlength']">Name must be at least 2 characters long</span>
+            <span *ngIf="name.errors?.['maxlength']">Name cannot exceed 80 characters</span>
+          </div>
         </div>
 
-        <div>
-          <label for="email">Email</label>
+        <div class="form-group">
+          <label for="email">Email Address *</label>
           <input type="email" id="email" name="email" [(ngModel)]="formData.email"
-                 required email #email="ngModel">
-          <span class="error-text" *ngIf="email.invalid && email.touched">
-            Please enter a valid email address.
-          </span>
+                 required email #email="ngModel"
+                 placeholder="Enter your email address">
+          <div class="error-text" *ngIf="email.invalid && email.touched">
+            <span *ngIf="email.errors?.['required']">Email is required</span>
+            <span *ngIf="email.errors?.['email']">Please enter a valid email address</span>
+          </div>
         </div>
       </div>
 
       <!-- Row 2: Subject -->
       <div class="form-row">
-        <div style="grid-column: 1 / -1;">
-          <label for="subject">Subject</label>
+        <div class="form-group full-width">
+          <label for="subject">Subject *</label>
           <input type="text" id="subject" name="subject" [(ngModel)]="formData.subject"
-                 required minlength="3" maxlength="120" #subject="ngModel">
-          <span class="error-text" *ngIf="subject.invalid && subject.touched">
-            Please enter a subject (3–120 characters).
-          </span>
+                 required minlength="3" maxlength="120" #subject="ngModel"
+                 placeholder="What is this message about?">
+          <div class="error-text" *ngIf="subject.invalid && subject.touched">
+            <span *ngIf="subject.errors?.['required']">Subject is required</span>
+            <span *ngIf="subject.errors?.['minlength']">Subject must be at least 3 characters long</span>
+            <span *ngIf="subject.errors?.['maxlength']">Subject cannot exceed 120 characters</span>
+          </div>
         </div>
       </div>
 
       <!-- Row 3: Message -->
       <div class="form-row">
-        <div style="grid-column: 1 / -1;">
-          <label for="message">Message</label>
+        <div class="form-group full-width">
+          <label for="message">Message *</label>
           <textarea id="message" name="message" [(ngModel)]="formData.message"
-                    required minlength="10" maxlength="1000" #message="ngModel"></textarea>
-          <span class="error-text" *ngIf="message.invalid && message.touched">
-            Please enter a message (10–1000 characters).
-          </span>
+                    required minlength="10" maxlength="1000" #message="ngModel"
+                    placeholder="Tell us more about your inquiry or feedback..."></textarea>
+          <div class="error-text" *ngIf="message.invalid && message.touched">
+            <span *ngIf="message.errors?.['required']">Message is required</span>
+            <span *ngIf="message.errors?.['minlength']">Message must be at least 10 characters long</span>
+            <span *ngIf="message.errors?.['maxlength']">Message cannot exceed 1000 characters</span>
+          </div>
+          <div class="char-counter">
+            <span [class]="message.value?.length > 900 ? 'warning' : ''">
+              {{ message.value?.length || 0 }}/1000 characters
+            </span>
+          </div>
         </div>
       </div>
 
       <!-- Submit Button -->
       <div class="contact-actions">
-        <button type="submit" [disabled]="contactForm.invalid">Send Message</button>
+        <button type="submit" [disabled]="contactForm.invalid || isSubmitting" [class.loading]="isSubmitting">
+          <span *ngIf="!isSubmitting">Send Message</span>
+          <span *ngIf="isSubmitting">
+            <span class="spinner"></span>
+            Sending...
+          </span>
+        </button>
       </div>
     </form>
 
-    <p class="alert alert-success mt-3" *ngIf="formSubmitted">
-      ✅ Message submitted successfully!
-    </p>
+    <div class="success-message" *ngIf="formSubmitted">
+      <div class="success-content">
+        <span class="success-icon">✅</span>
+        <div>
+          <h3>Message Sent Successfully!</h3>
+          <p>Thank you for contacting us. We'll get back to you soon.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
