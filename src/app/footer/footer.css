@@ -19,7 +19,9 @@
 .news h5{
     font-size: 20px;
 }
-form {
+.news form {
+    height: 40px;
+    width: 100%;
     align-items: center;
 }
 .news input{
@@ -31,7 +33,7 @@ form {
     margin-right: 10px;
 }
 .news button {
-    font-size: 20px;
+    font-size: 18px;
     height: 40px;
     width: 200px;
     background-color: white;
