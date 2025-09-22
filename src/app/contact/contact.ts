@@ -23,7 +23,7 @@ export class Contact {
       console.log('Form Data:', this.formData);
       this.formSubmitted = true;
       form.resetForm(); // reset the form after submission
-    }
+    } 
   }
 
 }
