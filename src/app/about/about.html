@@ -1,1 +1,36 @@
-<p>about works!</p>
+<div class="about-container">
+  <h1 class="page-title">About Us</h1>
+  
+  <div class="about-content">
+    <div class="about-column left-column">
+      <div class="ai-image-container">
+        <img src="https://cdn.britannica.com/47/246247-050-F1021DE9/AI-text-to-image-photo-robot-with-computer.jpg" 
+             alt="Artificial Intelligence Technology" 
+             class="ai-image">
+      </div>
+    </div>
+    
+    <div class="about-column right-column">
+      <div class="about-info">
+        <p class="about-description">{{ blogDescription }}</p>
+        
+        <div class="author-info">
+          <h3>{{ authorTitle }}</h3>
+          <p>{{ authorDescription }}</p>
+        </div>
+        
+        <div class="mission-info">
+          <h3>{{ missionTitle }}</h3>
+          <p>{{ missionDescription }}</p>
+        </div>
+        
+        <div class="values-list">
+          <h3>{{ valuesTitle }}</h3>
+          <ul>
+            <li *ngFor="let value of values">{{ value }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
