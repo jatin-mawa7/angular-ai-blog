@@ -51,6 +51,7 @@ marquee {
     color: white ;
     text-decoration: none;
 }
+
 /* @media (max-width: 768px) {
   Navbar: stack elements and align nav links to the left 
   .navbar {

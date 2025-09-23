@@ -176,21 +176,21 @@ export class Blogs {
         'https://images.ctfassets.net/lzny33ho1g45/2olcy4TVSWAjqy5dsxLNZd/09b4a18346af97076615d5f1d1407c39/best-ai-image-generator-hero.jpg',
       link: 'https://sk3316.github.io/AI-blog/single_blogs/three.html',
     },
-    // ...rest of posts
+    
   ];
 
   postsPerPage = 4;
   currentIndex = 0;
 
-  filteredPosts: Post[] = [...this.posts]; // copy of original for search
+  filteredPosts: Post[] = [...this.posts]; 
 
   get displayedPosts(): Post[] {
-    // Posts to show based on currentIndex and postsPerPage
+    
     return this.filteredPosts.slice(0, this.currentIndex);
   }
 
   ngOnInit() {
-    // Initialize currentIndex to postsPerPage so initial posts show
+    
     this.currentIndex = this.postsPerPage;
   }
 
@@ -206,7 +206,7 @@ export class Blogs {
         post.author.toLowerCase().includes(query) ||
         post.description.toLowerCase().includes(query)
     );
-    this.currentIndex = this.postsPerPage; // Reset pagination after search
+    this.currentIndex = this.postsPerPage; 
   }
 
   canSeeMore(): boolean {

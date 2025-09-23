@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
 })
 export class Home {
   name = 'Featured Blogs';
-  news = 'Latest News';
+  news = 'Latest AI News';
   blogs = [
     {
       title: 'Understanding GPT-4 Architecture',
