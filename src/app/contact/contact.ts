@@ -20,7 +20,6 @@ export class Contact {
   };
 
   onSubmit(form: NgForm): void {
-    // Mark all fields as touched to show validation errors
     if (form.invalid) {
       this.markFormGroupTouched(form);
       return;
@@ -29,13 +28,11 @@ export class Contact {
     if (form.valid && !this.isSubmitting) {
       this.isSubmitting = true;
       
-      // Simulate form submission (replace with actual API call)
       setTimeout(() => {
         console.log('Form Data:', this.formData);
         this.formSubmitted = true;
         this.isSubmitting = false;
         
-        // Reset form after successful submission
         form.resetForm();
         this.formData = {
           name: '',
@@ -44,7 +41,7 @@ export class Contact {
           message: ''
         };
         
-        // Hide success message after 5 seconds
+        
         setTimeout(() => {
           this.formSubmitted = false;
         }, 5000);
@@ -59,12 +56,12 @@ export class Contact {
     });
   }
 
-  // Helper method to check if a field has specific error
+  
   hasError(field: any, errorType: string): boolean {
     return field.errors && field.errors[errorType] && field.touched;
   }
 
-  // Helper method to get error message
+  
   getErrorMessage(field: any): string {
     if (!field.errors || !field.touched) return '';
     
